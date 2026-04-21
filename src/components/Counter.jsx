@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Counter.css'; // Le CSS est importé directement dans le composant React
+import './Counter.css';
 
 export default function Counter({ start = 0 }) {
   const [count, setCount] = useState(start);
