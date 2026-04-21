@@ -1,0 +1,81 @@
+---
+// Partie Serveur - Exécutée pendant le build
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Mon Portfolio Astro</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/">Accueil</a>
+        <a href="/projets">Projets</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Contenu spécifique à la page injecté ici -->
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <p>© 2026 - Construit avec Astro 🚀</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  /* Style Global (affecte tout le site) */
+  :root {
+    --color-primary: #6e57e0;
+    --color-bg: #0f172a;
+    --color-text: #e2e8f0;
+  }
+
+  body {
+    font-family: system-ui, sans-serif;
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  header {
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 2rem;
+    font-weight: 500;
+  }
+
+  nav a:hover {
+    color: var(--color-primary);
+  }
+
+  main {
+    min-height: 80vh;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid #1e293b;
+    font-size: 0.9rem;
+    color: #64748b;
+  }
+</style>
