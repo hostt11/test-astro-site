@@ -1,0 +1,120 @@
+---
+// Partie "Build" (JavaScript Serveur)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Counter from '../components/Counter.jsx';
+
+// On peut faire des requêtes API ici, lire des fichiers Markdown, etc.
+const nom = "Kerm";
+const competences = ["Astro", "React", "Next.js", "HTML"];
+const projetDuMois = {
+  titre: "Refonte du site Astro",
+  description: "Migration complète d'un site WordPress vers Astro. Résultat : Score Lighthouse 100/100."
+};
+---
+
+<BaseLayout title="Accueil - Portfolio">
+  
+  <!-- Style Scoped (n'affecte que cette page) -->
+  <style>
+    .hero {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    
+    .badge {
+      background: #2d3a5e;
+      padding: 0.25rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .grid-skills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+    }
+
+    .skill-tag {
+      background: #1e293b;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid #3b4a62;
+    }
+
+    .project-card {
+      background: #1e293b;
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border: 1px solid #334155;
+    }
+
+    .astro-icon {
+      font-size: 2rem;
+      vertical-align: middle;
+    }
+  </style>
+
+  <div class="hero">
+    <span class="badge">🛠️ Disponible pour missions</span>
+    
+    <h1>
+      Hey, je suis {nom} 
+      <span class="astro-icon">🚀</span>
+    </h1>
+    
+    <p style="font-size: 1.25rem; max-width: 600px; color: #94a3b8;">
+      Développeur spécialisé dans les frameworks modernes. 
+      Je construis des sites web ultra-rapides avec <strong>Astro</strong> et <strong>Next.js</strong>.
+    </p>
+
+    <!-- Affichage dynamique depuis la partie serveur (Astro.props) -->
+    <div class="grid-skills">
+      {competences.map(skill => (
+        <span class="skill-tag">{skill}</span>
+      ))}
+    </div>
+
+    <!-- Projet mis en avant (Contenu Statique) -->
+    <div class="project-card">
+      <h2>⭐ Projet du moment</h2>
+      <h3>{projetDuMois.titre}</h3>
+      <p>{projetDuMois.description}</p>
+    </div>
+
+    <!-- 
+      ICI C'EST LA MAGIE D'ASTRO 
+      On charge un composant React avec un attribut spécial "client:visible"
+      Le JavaScript ne se charge QUE quand l'utilisateur scrolle jusqu'à ce composant.
+    -->
+    <div>
+      <h2>Interactivité Hydratée</h2>
+      <Counter start={5} client:visible />
+      <p style="margin-top: 0.5rem; font-style: italic;">👆 Essaye de cliquer. Ce code React est isolé du reste de la page statique.</p>
+    </div>
+
+    <hr style="margin: 3rem 0; border-color: #1e293b;" />
+
+    <!-- Astuce Astro : Rendu conditionnel dans le HTML -->
+    <footer>
+      <p>
+        ✅ Page générée en 
+        {new Date().toLocaleTimeString('fr-FR')} 
+        (Heure du build, pas de JavaScript pour afficher ça !)
+      </p>
+    </footer>
+  </div>
+</BaseLayout>
