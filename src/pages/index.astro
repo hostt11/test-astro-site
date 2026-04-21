@@ -1,11 +1,9 @@
 ---
-// Partie "Build" (JavaScript Serveur)
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Counter from '../components/Counter.jsx';
 
-// On peut faire des requêtes API ici, lire des fichiers Markdown, etc.
 const nom = "Kerm";
-const competences = ["Astro", "React", "Next.js", "HTML"];
+const competences = ["Astro", "React", "Next.js", "Html"];
 const projetDuMois = {
   titre: "Refonte du site Astro",
   description: "Migration complète d'un site WordPress vers Astro. Résultat : Score Lighthouse 100/100."
@@ -14,7 +12,6 @@ const projetDuMois = {
 
 <BaseLayout title="Accueil - Portfolio">
   
-  <!-- Style Scoped (n'affecte que cette page) -->
   <style>
     .hero {
       padding: 4rem 2rem;
@@ -81,25 +78,18 @@ const projetDuMois = {
       Je construis des sites web ultra-rapides avec <strong>Astro</strong> et <strong>Next.js</strong>.
     </p>
 
-    <!-- Affichage dynamique depuis la partie serveur (Astro.props) -->
     <div class="grid-skills">
       {competences.map(skill => (
         <span class="skill-tag">{skill}</span>
       ))}
     </div>
 
-    <!-- Projet mis en avant (Contenu Statique) -->
     <div class="project-card">
       <h2>⭐ Projet du moment</h2>
       <h3>{projetDuMois.titre}</h3>
       <p>{projetDuMois.description}</p>
     </div>
 
-    <!-- 
-      ICI C'EST LA MAGIE D'ASTRO 
-      On charge un composant React avec un attribut spécial "client:visible"
-      Le JavaScript ne se charge QUE quand l'utilisateur scrolle jusqu'à ce composant.
-    -->
     <div>
       <h2>Interactivité Hydratée</h2>
       <Counter start={5} client:visible />
@@ -108,12 +98,11 @@ const projetDuMois = {
 
     <hr style="margin: 3rem 0; border-color: #1e293b;" />
 
-    <!-- Astuce Astro : Rendu conditionnel dans le HTML -->
     <footer>
       <p>
         ✅ Page générée en 
         {new Date().toLocaleTimeString('fr-FR')} 
-        (Heure du build, pas de JavaScript pour afficher ça !)
+        (Heure du build)
       </p>
     </footer>
   </div>
