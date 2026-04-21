@@ -9,11 +9,9 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.0.0"
-  },
-  "devDependencies": {
-    "@astrojs/react": "^3.0.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "@astrojs/react": "^3.0.10",   // 🔴 AJOUT OBLIGATOIRE
+    "astro": "^4.15.0",
+    "react": "^18.3.1",             // 🔴 AJOUT OBLIGATOIRE
+    "react-dom": "^18.3.1"          // 🔴 AJOUT OBLIGATOIRE
   }
 }
