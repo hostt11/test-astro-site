@@ -1,0 +1,40 @@
+.counter-card {
+  background: #1e293b;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 1px solid #334155;
+  margin-top: 2rem;
+}
+
+.counter-card button {
+  background: var(--color-primary, #6e57e0);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 0 1rem;
+  transition: transform 0.1s ease;
+}
+
+.counter-card button:hover {
+  transform: scale(1.1);
+  background: #7c66e8;
+}
+
+.count-value {
+  font-size: 3rem;
+  font-weight: bold;
+  min-width: 80px;
+  display: inline-block;
+}
+
+.hint {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
